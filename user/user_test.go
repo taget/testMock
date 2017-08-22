@@ -38,4 +38,12 @@ func TestUse(t *testing.T) {
 		err := testUser.Use()
 		So(err, ShouldEqual, dummyError)
 	})
+
+	Convey("Test Use returns errors as lib returns non-zero", t, func() {
+
+		mockDoer.EXPECT().DoSomething(123, "Hello GoMock").Times(0)
+		err := testUser.Use()
+		So(err, ShouldNotBeNil)
+	})
+
 }
