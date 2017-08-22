@@ -8,3 +8,10 @@ Use Gomock to Mock interface
 Convey
 ======
 Use convey to do BDD testing
+
+gostub
+======
+Use gostub to stub variable/function ...
+
+But we need to define function as a variable. see lib/lib.go
+github.com/prashantv/gostub
