@@ -34,8 +34,9 @@ var _ = Describe("User", func() {
 
 	Describe("Test User Dosometing action", func() {
 		Context("Call DoSomething", func() {
-			// Focus on this spec
-			FIt("should have no error", func() {
+			// Focus will cause ginkgo fail with 197 Detected Programmatic Focus - setting exit status to 197
+			// FIt("should have no error", func() {
+			It("should have no error", func() {
 				By("Stub func ... ")
 				subs := StubFunc(&lib.What, 0, nil)
 				defer subs.Reset()
@@ -44,7 +45,8 @@ var _ = Describe("User", func() {
 
 			})
 			// Mark this spec as pending
-			PIt("should returns errors", func() {
+			//PIt("should returns errors", func() {
+			It("should returns errors", func() {
 
 				subs := StubFunc(&lib.What, 0, nil)
 				defer subs.Reset()
