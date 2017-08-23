@@ -1,6 +1,16 @@
 Unit test example in golang
 ==========================
 
+We would like to test user.User.Use(), that method calls an interface
+Doer.
+
+Use gomock to generage mock interface.
+
+Besides, there's a lib function call, us gostub to stub that method.
+
+There are 2 packages:
+user and user1, the test cases are wrote with differents test framework.
+
 GoMock
 ======
 Use Gomock to Mock interface
