@@ -1,27 +1,24 @@
 package functional_test
 
 import (
-	"testing"
-
 	. "github.com/onsi/ginkgo"
 
-	"gopkg.in/h2non/baloo.v1"
+	"github.com/verdverm/frisby"
+	//"github.com/bitly/go-simplejson"
 )
 
-var _ = Describe("Workload", func() {
+var _ = Describe("Workload frisby", func() {
 
 	var (
-		url  string
-		test *baloo.Client
-		t    *testing.T
+		url string
+		F   *frisby.Frisby
 	)
 
 	BeforeEach(func() {
 		By("set url and get request")
 		// read from config file
 		url = "http://127.0.0.1:8888/v1/workloads"
-		t = GinkgoT().(*testing.T)
-		test = baloo.New(url)
+		F = frisby.Create("Test Workload")
 
 	})
 
@@ -35,11 +32,11 @@ var _ = Describe("Workload", func() {
 		Context("Get all workloads", func() {
 			It("should have no error", func() {
 				By("Get request  ... ")
-				test.Get("/").
+				F.Get(url).
 					SetHeader("Content-Type", "application/json").
-					Expect(t).
-					Status(200).
-					Done()
+					Send().
+					ExpectStatus(200).
+					ExpectJsonLength("json", 0)
 			})
 		})
 	})
